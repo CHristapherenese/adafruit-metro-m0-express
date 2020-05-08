@@ -1,5 +1,5 @@
 {
-    "name": "adafruit metro m0 express",
+    "name": "Temp",
     "description": "",
     "dependencies": {
         "adafruit-metro-m0-express": "*"
