@@ -1,11 +1,23 @@
-let Temp3 = 0
 let Temp = 0
+let Temp3 = 0
 let degrees = 0
 pins.LED.digitalWrite(false)
 ht16k33.setAddress(HT16K33_I2C_ADDRESSES.ADD_0x70)
 ht16k33.setBlinkRate(5)
 ht16k33.setBrightness(100)
 let _7seg = 0
+serial.redirect(pins.D1, pins.D0, BaudRate.BaudRate115200)
+forever(function () {
+    if (degrees == 0) {
+        for (let index = 0; index < 3; index++) {
+            Temp3 = 1
+            pause(1000)
+            Temp3 = 0
+            pause(1000)
+        }
+    }
+    pause(5000)
+})
 forever(function () {
     degrees = pins.i2cReadNumber(
     24,
@@ -13,6 +25,7 @@ forever(function () {
     true
     )
     console.logValue("deg", degrees)
+    serial.writeValue("Deg", degrees)
     pause(1000)
     if (degrees < 1) {
         Temp = 0
@@ -36,17 +49,6 @@ forever(function () {
         console.logValue("7Seg", _7seg)
         pause(1000)
     }
-})
-forever(function () {
-    if (degrees == 0) {
-        for (let index = 0; index < 3; index++) {
-            Temp3 = 1
-            pause(1000)
-            Temp3 = 0
-            pause(1000)
-        }
-    }
-    pause(5000)
 })
 forever(function () {
     if (Temp3) {
