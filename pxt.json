@@ -5,7 +5,8 @@
         "adafruit-metro-m0-express": "*",
         "pxt-ht16k33": "github:christapherenese/pxt-ht16k33#8af11d29ec00b68f14af6d299647cfdd7fd8bd8c",
         "seesaw": "github:adafruit/pxt-seesaw#v0.0.19",
-        "display": "*"
+        "display": "*",
+        "datalogger": "*"
     },
     "files": [
         "main.blocks",
